@@ -5,7 +5,7 @@ import 'package:islami/QuranTab.dart';
 import 'package:islami/RadioTab.dart';
 import 'package:islami/SebhaTab.dart';
 import 'package:islami/SettingsTab.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 void main() {
   runApp(MyApp());
 }
@@ -18,6 +18,10 @@ class MyThemeData {
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent ,
       elevation: 0 ,
+      iconTheme: IconThemeData(
+        color: Colors.black ,
+        size: 20
+      ),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: Colors.black,
@@ -30,6 +34,10 @@ class MyThemeData {
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent ,
       elevation: 0 ,
+        iconTheme: IconThemeData(
+            color: Colors.black ,
+            size: 20
+        ),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: Colors.black,
@@ -45,8 +53,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: MyThemeData.lightTheme,
       darkTheme: MyThemeData.darkTheme,
+
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: Locale('ar'),
+
       routes: {
         MyHomePage.routeName : (BuildContext)=> MyHomePage(),
+        SuraDetails.routeName : (BuildContext)=> SuraDetails(),
+
       },
       initialRoute: MyHomePage.routeName ,
     );
@@ -77,7 +92,8 @@ class _MyHomePageState extends State<MyHomePage> {
         Scaffold(
             appBar: AppBar(
               title: Center(
-                  child: Text('Islami' , style: TextStyle(
+                  child: Text(AppLocalizations.of(context)!.app_tittle ,
+                    style: TextStyle(
                     color: Colors.black ,
                     fontSize: 30 ,
                   ),),
@@ -91,7 +107,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 onTap: (index){
                   currentIndex=index ;
                   setState(() {
-
                   });
                 },
                 items: [
@@ -99,30 +114,29 @@ class _MyHomePageState extends State<MyHomePage> {
                     icon: ImageIcon(
                       AssetImage('assets/images/quran_icon.png')
                     ),
-                    label: 'Quran',
+                    label: AppLocalizations.of(context)!.quran,
                   ),
                   BottomNavigationBarItem(
                     icon: ImageIcon(
                       AssetImage('assets/images/hadeth_icon.png'),
                     ),
-                    label: 'Hadeth',
+                    label: AppLocalizations.of(context)!.hadeth,
                   ),
                   BottomNavigationBarItem(
                     icon: ImageIcon(
                       AssetImage('assets/images/sebha_icon.png'),
                     ),
-                    label: 'Sebha',
+                    label: AppLocalizations.of(context)!.sebha,
                   ),
                   BottomNavigationBarItem(
                     icon: ImageIcon(
                       AssetImage('assets/images/radio_icon.png'),
                     ),
-                    label: 'Radio',
+                    label: AppLocalizations.of(context)!.radio,
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.settings)
-                    ,
-                    label: 'Settings',
+                    icon: Icon(Icons.settings),
+                    label: AppLocalizations.of(context)!.settings,
                   ),
                 ],
               ),
