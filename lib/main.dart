@@ -91,6 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onTap: (index){
                   currentIndex=index ;
                   setState(() {
+
                   });
                 },
                 items: [
