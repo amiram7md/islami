@@ -49,8 +49,10 @@ class _QuranTabState extends State<QuranTab> {
                         color: MyThemeData.primaryColor,
                       );
                     },
-                    itemCount: names.length),
-              )),
+                    itemCount: names.length
+                ),
+              )
+          ),
         ],
       ),
     );
