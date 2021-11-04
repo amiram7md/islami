@@ -153,7 +153,7 @@ class _SuraDetailsState extends State<SuraDetails> {
               ]
             ),
           ),
-        )
+        ),
       ],
     );
   }

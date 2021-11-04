@@ -6,6 +6,7 @@ import 'package:islami/RadioTab.dart';
 import 'package:islami/SebhaTab.dart';
 import 'package:islami/SettingsTab.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 void main() {
   runApp(MyApp());
 }
