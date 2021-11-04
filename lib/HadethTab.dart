@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:islami/main.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HadethTab extends StatefulWidget{
   @override
@@ -76,6 +77,7 @@ class HadethTittleWidget extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 25,
+
           ),
         ),
       ),
@@ -128,7 +130,8 @@ class _HadethDetailsState extends State<HadethDetails> {
                 children: [
                   Text(args.tittle ,
                     style: TextStyle(
-                        fontSize: 25
+                        fontSize: 25 ,
+                        fontWeight: FontWeight.bold
                     ),),
                   Container(
                     padding: EdgeInsets.fromLTRB(25, 0, 25, 0),

@@ -125,7 +125,8 @@ class _SuraDetailsState extends State<SuraDetails> {
               children: [
                 Text('سورة ' + args.suraName ,
                 style: TextStyle(
-                  fontSize: 25
+                  fontSize: 25 ,
+                  fontWeight: FontWeight.bold
                 ),),
                 Container(
                   padding: EdgeInsets.fromLTRB(25, 0, 25, 0),

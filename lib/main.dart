@@ -116,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 items: [
                   BottomNavigationBarItem(
                     icon: ImageIcon(
-                      AssetImage('assets/images/quran_icon.png')
+                      AssetImage('assets/images/quran_icon.png' ,)
                     ),
                     label: AppLocalizations.of(context)!.quran,
                   ),
