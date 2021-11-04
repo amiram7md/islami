@@ -100,7 +100,8 @@ class _SebhaTabState extends State<SebhaTab> {
                 ),
               ]
           ),
-        ),)
+          ),
+        ),
       ],
     );
   }
