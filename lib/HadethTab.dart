@@ -141,17 +141,17 @@ class _HadethDetailsState extends State<HadethDetails> {
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 7),
                       child:
-                      hadeth.isEmpty ? Center(child: CircularProgressIndicator())
+                      hadeth.isEmpty ? Center(child: CircularProgressIndicator(),)
                           : ListView.builder(
-                        itemBuilder: (buildContext, index) {
-                          return Text(hadeth[index],
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 20 ,
-                            ),);
-                        },
-                        itemCount: hadeth.length,
-                      ) ,
+                            itemBuilder: (buildContext, index) {
+                              return Text(hadeth[index],
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                 fontSize: 20 ,
+                                ),
+                                );},
+                           itemCount: hadeth.length,
+                          ) ,
                     ),
                   ),
                 ]
