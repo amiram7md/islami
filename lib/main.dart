@@ -62,7 +62,6 @@ class MyApp extends StatelessWidget {
       routes: {
         MyHomePage.routeName : (BuildContext)=> MyHomePage(),
         SuraDetails.routeName : (BuildContext)=> SuraDetails(),
-        HadethDetails.routeName : (BuildContext)=> HadethDetails(),
 
       },
       initialRoute: MyHomePage.routeName ,
@@ -90,9 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.asset('assets/images/background_screen.png' ,
-          fit: BoxFit.fill,
-        width: double.infinity,),
+        Image.asset('assets/images/background_screen.png'),
         Scaffold(
             appBar: AppBar(
               title: Center(
