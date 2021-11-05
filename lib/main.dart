@@ -62,6 +62,7 @@ class MyApp extends StatelessWidget {
       routes: {
         MyHomePage.routeName : (BuildContext)=> MyHomePage(),
         SuraDetails.routeName : (BuildContext)=> SuraDetails(),
+        HadethDetails.routeName : (BuildContext) => HadethDetails(),
 
       },
       initialRoute: MyHomePage.routeName ,
@@ -134,10 +135,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       AssetImage('assets/images/radio_icon.png'),
                     ),
                     label: AppLocalizations.of(context)!.radio,
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.settings),
-                    label: AppLocalizations.of(context)!.settings,
                   ),
                 ],
               ),

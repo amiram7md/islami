@@ -57,7 +57,6 @@ class _HadethTabState extends State<HadethTab> {
   }
 }
 
-
 class HadethTittleWidget extends StatelessWidget {
   String tittle;
   int index;
@@ -129,7 +128,8 @@ class _HadethDetailsState extends State<HadethDetails> {
                 children: [
                   Text(args.tittle ,
                     style: TextStyle(
-                        fontSize: 25
+                        fontSize: 25 ,
+                      fontWeight: FontWeight.bold,
                     ),),
                   Container(
                     padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
@@ -153,8 +153,7 @@ class _HadethDetailsState extends State<HadethDetails> {
                            itemCount: hadeth.length,
                           ) ,
                     ),
-                  ),
-                ]
+                  ),]
             ),
           ),
         )
