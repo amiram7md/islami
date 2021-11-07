@@ -29,6 +29,7 @@ class _HadethTabState extends State<HadethTab> {
   ];
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Container(
       child: Column(
         children: [
@@ -44,12 +45,13 @@ class _HadethTabState extends State<HadethTab> {
                     separatorBuilder: (buildContext, index) {
                       return Container(
                         height: 1,
-                        color: MyThemeData.primaryColor,
+                        color: isDarkMode ? MyThemeData.primaryColorDark2
+                            : MyThemeData.primaryColor,
                       );
                     },
                     itemCount: tittle.length
                 ),
-              )
+              ),
           ),
         ],
       ),
@@ -76,6 +78,7 @@ class HadethTittleWidget extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 25,
+            fontWeight: FontWeight.bold
           ),
         ),
       ),
@@ -101,25 +104,31 @@ class _HadethDetailsState extends State<HadethDetails> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     var args = ModalRoute.of(context)!.settings.arguments as HadethDetailsArgs ;
     if(hadeth.isEmpty)
       readHadeth(args.index);
     return Stack(
       children: [
-        Image.asset('assets/images/background_screen.png'),
+        Image.asset(
+            isDarkMode ? 'assets/images/background_screen_dark.png'
+            : 'assets/images/background_screen.png'
+        ),
         Scaffold(
           appBar: AppBar(
             title: Center(
               child: Text(AppLocalizations.of(context)!.app_tittle,
                 style: TextStyle(
-                  color: Colors.black,
                   fontSize: 30,
+                  color: isDarkMode ? Colors.white
+                      : Colors.black,
                 ),),
             ),
           ),
           body: Container(
             decoration: BoxDecoration(
-              color: Colors.white ,
+              color: isDarkMode ? MyThemeData.primaryColorDark
+              :Colors.white ,
               borderRadius: BorderRadius.circular(10) ,
             ),
             padding: EdgeInsets.all(25),
@@ -128,13 +137,16 @@ class _HadethDetailsState extends State<HadethDetails> {
                 children: [
                   Text(args.tittle ,
                     style: TextStyle(
-                        fontSize: 25 ,
+                      fontSize: 25 ,
                       fontWeight: FontWeight.bold,
+                      color: isDarkMode ? MyThemeData.primaryColorDark2
+                          :Colors.black
                     ),),
                   Container(
                     padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
                     height: 1,
-                    color: MyThemeData.primaryColor,
+                    color: isDarkMode ? MyThemeData.primaryColorDark2
+                        : MyThemeData.primaryColor,
                   ),
                   Expanded(
                     flex: 3,
@@ -148,6 +160,8 @@ class _HadethDetailsState extends State<HadethDetails> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                  fontSize: 20 ,
+                                  color: isDarkMode ? MyThemeData.primaryColorDark2
+                                      :Colors.black
                                 ),
                                 );},
                            itemCount: hadeth.length,

@@ -16,6 +16,7 @@ class _SebhaTabState extends State<SebhaTab> {
   ];
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return  Column(
       children: [
         Expanded(
@@ -26,15 +27,19 @@ class _SebhaTabState extends State<SebhaTab> {
               children:[
                 Container(
                   margin: EdgeInsets.only(bottom: 95 , left: 50),
-                    child: Image.asset('assets/images/sebha_logo1.png')
+                    child: Image.asset(
+                        isDarkMode ? 'assets/images/sebha_logo1_dark.png'
+                        : 'assets/images/sebha_logo1.png'
+                    )
                 ),
-                InkWell(
-                  child: Container(
-                    margin: EdgeInsets.only(top: 80),
-                    child: Transform.rotate(
-                        angle: angle,
-                        child: Image.asset('assets/images/sebha_logo2.png')
-                    ),
+                Container(
+                  margin: EdgeInsets.only(top: 80),
+                  child: Transform.rotate(
+                      angle: angle,
+                      child: Image.asset(
+                          isDarkMode ? 'assets/images/sebha_logo2_dark.png'
+                          : 'assets/images/sebha_logo2.png'
+                      )
                   ),
                 ),
               ]
@@ -63,7 +68,9 @@ class _SebhaTabState extends State<SebhaTab> {
                   child: Center(
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 207, 185, 151) ,
+                        color: isDarkMode ? Color.fromARGB(255, 21, 27, 48)
+                            : Color.fromARGB(255, 207, 185, 151)
+                         ,
                         borderRadius: BorderRadius.circular(15) ,
                       ),
                       padding: EdgeInsets.symmetric(vertical: 20 , horizontal: 20),
@@ -80,7 +87,9 @@ class _SebhaTabState extends State<SebhaTab> {
                   child: Center(
                     child: ElevatedButton(
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(MyThemeData.primaryColor) ,
+                        backgroundColor: MaterialStateProperty.all(
+                          isDarkMode ? MyThemeData.primaryColorDark2
+                          : MyThemeData.primaryColor,) ,
                         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),

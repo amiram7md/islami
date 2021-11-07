@@ -4,7 +4,7 @@ import 'package:islami/HadethTab.dart';
 import 'package:islami/QuranTab.dart';
 import 'package:islami/RadioTab.dart';
 import 'package:islami/SebhaTab.dart';
-import 'package:islami/SettingsTab.dart';
+import 'package:islami/AzkarTab.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
@@ -13,10 +13,19 @@ void main() {
 
 class MyThemeData {
   static const Color primaryColor = Color.fromARGB(255, 183, 147, 95) ;
+  static const Color primaryColorDark = Color.fromARGB(255, 20, 26, 46) ;
+  static const Color primaryColorDark2 = Color.fromARGB(255, 250, 204, 29) ;
+
+
+
   static final ThemeData lightTheme = ThemeData(
+    brightness: Brightness.light,
     primaryColor: MyThemeData.primaryColor ,
     scaffoldBackgroundColor: Colors.transparent ,
     appBarTheme: AppBarTheme(
+      titleTextStyle: TextStyle(
+        color: Colors.black
+      ),
       backgroundColor: Colors.transparent ,
       elevation: 0 ,
       iconTheme: IconThemeData(
@@ -30,18 +39,22 @@ class MyThemeData {
     ),
   ) ;
   static final ThemeData darkTheme = ThemeData(
-    primaryColor: MyThemeData.primaryColor ,
+    brightness: Brightness.dark,
+    primaryColor: MyThemeData.primaryColorDark ,
     scaffoldBackgroundColor: Colors.transparent ,
     appBarTheme: AppBarTheme(
+      titleTextStyle: TextStyle(
+          color: Colors.white
+      ),
       backgroundColor: Colors.transparent ,
       elevation: 0 ,
         iconTheme: IconThemeData(
-            color: Colors.black ,
+            color: Colors.white ,
             size: 20
         ),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      selectedItemColor: Colors.black,
+      selectedItemColor: MyThemeData.primaryColorDark2,
       unselectedItemColor: Colors.white,
     ),
   ) ;
@@ -84,26 +97,36 @@ class _MyHomePageState extends State<MyHomePage> {
     HadethTab(),
     SebhaTab(),
     RadioTab(),
-    SettingsTab()
+    AzkarTab()
   ];
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Stack(
       children: [
-        Image.asset('assets/images/background_screen.png'),
+        Image.asset(
+            isDarkMode
+                ? 'assets/images/background_screen_dark.png'
+                : 'assets/images/background_screen.png' ,
+          fit: BoxFit.cover,
+        ),
         Scaffold(
             appBar: AppBar(
               title: Center(
                   child: Text(AppLocalizations.of(context)!.app_tittle ,
                     style: TextStyle(
-                    color: Colors.black ,
                     fontSize: 30 ,
+                      color: isDarkMode ? Colors.white
+                          : Colors.black,
                   ),),
               ),
             ),
             bottomNavigationBar: Theme(
               data: Theme.of(context).copyWith(
-                canvasColor: MyThemeData.primaryColor),
+                canvasColor:
+                isDarkMode ? MyThemeData.primaryColorDark
+                : MyThemeData.primaryColor
+              ),
               child: BottomNavigationBar(
                 currentIndex: currentIndex,
                 onTap: (index){
@@ -135,6 +158,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       AssetImage('assets/images/radio_icon.png'),
                     ),
                     label: AppLocalizations.of(context)!.radio,
+                  ),
+                  BottomNavigationBarItem(
+                    icon: ImageIcon(
+                      AssetImage('assets/images/azkar_icon.png'),
+                    ),
+                    label: AppLocalizations.of(context)!.azkar,
                   ),
                 ],
               ),
