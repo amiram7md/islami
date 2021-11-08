@@ -94,7 +94,7 @@ class SuraDetails extends StatefulWidget {
 }
 
 class _SuraDetailsState extends State<SuraDetails> {
-  List<String> ayat =[];
+  List <String> ayat =[];
 
   @override
   Widget build(BuildContext context) {
@@ -151,7 +151,7 @@ class _SuraDetailsState extends State<SuraDetails> {
                       ayat.isEmpty ? Center(child: CircularProgressIndicator())
                       : ListView.builder(
                           itemBuilder: (buildContext, index) {
-                       return Text(ayat[index],
+                       return Text(ayat[index]+ ' (${index+1}) ',
                        textAlign: TextAlign.center,
                        style: TextStyle(
                          fontSize: 20 ,
@@ -174,10 +174,9 @@ class _SuraDetailsState extends State<SuraDetails> {
   Future<void> readSura (int index) async {
     String fileName = 'assets/files/${index+1}.txt';
     String fileContent = await rootBundle.loadString(fileName) ;
-    List<String> verses = fileContent.split('\n\r');
+    List <String> verses = fileContent.split('\n\r');
     ayat = verses;
-    setState(() {
-    });
+    setState(() {});
   }
 }
 

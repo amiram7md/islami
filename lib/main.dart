@@ -16,8 +16,6 @@ class MyThemeData {
   static const Color primaryColorDark = Color.fromARGB(255, 20, 26, 46) ;
   static const Color primaryColorDark2 = Color.fromARGB(255, 250, 204, 29) ;
 
-
-
   static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     primaryColor: MyThemeData.primaryColor ,
