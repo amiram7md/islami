@@ -174,7 +174,7 @@ class _SuraDetailsState extends State<SuraDetails> {
   Future<void> readSura (int index) async {
     String fileName = 'assets/files/${index+1}.txt';
     String fileContent = await rootBundle.loadString(fileName) ;
-    List <String> verses = fileContent.split('\n\r');
+    List <String> verses = fileContent.split('\n');
     ayat = verses;
     setState(() {});
   }
