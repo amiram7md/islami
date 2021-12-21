@@ -107,6 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ? 'assets/images/background_screen_dark.png'
                 : 'assets/images/background_screen.png' ,
           fit: BoxFit.cover,
+          width: double.infinity,
         ),
         Scaffold(
             appBar: AppBar(
